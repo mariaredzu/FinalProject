@@ -1,0 +1,61 @@
+<div class="text-center">
+    <div class="content bg-special-darkgrey">
+        <h2 class="m-0 p-3 text-white">User List</h2>
+    </div>
+    <div class="content bg-special-lightgrey p-2">
+        <a class="text-decoration-none text-light" routerLink="/userform">
+            <button class="btn btn-primary w-25 bg-special-red text-white text-center border-0 form-control m-5">
+                <strong>Add an user</strong>
+            </button>
+        </a>
+        <table class="table table-bordered w-75 mx-auto m-5 mt-0">
+            <thead>
+                <tr>
+                    <th (click)="sortColumn('type_name')">
+                        Type
+                        <span *ngIf="sortColumnName === 'type_name'" class="arrow">
+                            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                        </span>
+                    </th>
+                    <th (click)="sortColumn('name')">
+                        Name
+                        <span *ngIf="sortColumnName === 'name'" class="arrow">
+                            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                        </span>
+                    </th>
+                    <th (click)="sortColumn('firstName')">
+                        First Name
+                        <span *ngIf="sortColumnName === 'firstName'" class="arrow">
+                            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                        </span>
+                    </th>
+                    <th (click)="sortColumn('email')">
+                        E-mail
+                        <span *ngIf="sortColumnName === 'email'" class="arrow">
+                            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                        </span>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of users">
+                <tr>
+                    <th>{{user.usertype.type_name}}</th>
+                    <th>{{user.name}}</th>
+                    <th>{{user.firstName}}</th>
+                    <th>{{user.email}}</th>
+                    <th>
+                        <div class="d-flex justify-content-center">
+                            <button [disabled]="user.id === 0" id="editbtn" class="button me-1 bg-special-blue border-0 form-control" (click)="editUser(user)">
+                                <strong>Edit</strong>
+                            </button>
+                            <button [disabled]="user.id === 0" id="removebtn" class="button ms-2 bg-special-red text-white border-0 form-control" (click)="removeUser(user.id)">
+                                <strong>Remove</strong>
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

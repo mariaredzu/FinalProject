@@ -1,0 +1,77 @@
+<div class="text-center bg-special-lightgrey">
+  <div class="content bg-special-darkgrey">
+    <h2 class="m-0 p-3 text-white">Add / Edit an user</h2>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()" class="text-center">
+    <div class="mb-3">
+      <div class="m-3 mt-5">
+        <strong>Name</strong>
+      </div>
+      <input type="text" id="name" formControlName="name" class="border-red mx-auto text-center w-25 p-1">
+    </div>
+
+    <div class="mb-3">
+      <div class="m-3">
+        <strong>First Name</strong>
+      </div>
+      <input type="text" id="firstName" formControlName="firstName" class="border-red mx-auto text-center w-25 p-1">
+    </div>
+
+    <div class="mb-3">
+      <div class="m-3">
+        <strong>E-Mail</strong>
+      </div>
+      <input type="text" id="email" formControlName="email" class="border-red mx-auto text-center w-25 p-1">
+    </div>
+
+    <div class="mb-3">
+      <div class="m-3">
+        <strong>User Type</strong>
+      </div>
+      <select id="usertype" formControlName="usertype" class="border-red mx-auto text-center w-25 p-1">
+        <option value=null class="text-secondary" disabled selected>Select User Type</option>
+        <option *ngFor="let userType of usersty" [ngValue]="userType">{{ userType.type_name }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <div *ngIf="userForm.get('name')?.hasError('required') && userForm.get('name')?.touched" class="text-danger">
+        Name is required.
+      </div>
+      <div *ngIf="userForm.get('name')?.hasError('minlength') && userForm.get('name')?.touched" class="text-danger">
+        Name must be at least 2 characters long.
+      </div>
+      <div *ngIf="userForm.get('name')?.hasError('maxlength') && userForm.get('name')?.touched" class="text-danger">
+        Name cannot exceed 25 characters.
+      </div>
+      <div *ngIf="userForm.get('name')?.hasError('pattern') && userForm.get('name')?.touched" class="text-danger">
+        Name must contain only letters.
+      </div>
+      <div *ngIf="userForm.get('firstName')?.hasError('required') && userForm.get('firstName')?.touched" class="text-danger">
+        First Name is required.
+      </div>
+      <div *ngIf="userForm.get('firstName')?.hasError('minlength') && userForm.get('firstName')?.touched" class="text-danger">
+        First Name must be at least 2 characters long.
+      </div>
+      <div *ngIf="userForm.get('firstName')?.hasError('maxlength') && userForm.get('firstName')?.touched" class="text-danger">
+        First Name cannot exceed 25 characters.
+      </div>
+      <div *ngIf="userForm.get('firstName')?.hasError('pattern') && userForm.get('firstName')?.touched" class="text-danger">
+        First Name must contain only letters.
+      </div>
+      <div *ngIf="userForm.get('email')?.hasError('required') && userForm.get('email')?.touched" class="text-danger">
+        E-Mail is required.
+      </div>
+      <div *ngIf="userForm.get('email')?.hasError('email') && userForm.get('email')?.touched" class="text-danger">
+        Enter a valid email address.
+      </div>
+      <div *ngIf="userForm.get('usertype')?.hasError('required') && userForm.get('usertype')?.touched" class="text-danger">
+        User Type is required.
+      </div>
+    </div>
+
+    <button type="submit" class="button form-control mx-auto bg-special-red text-white border-0 w-25 m-3 mt-5 mb-5">
+      <strong>Create</strong>
+    </button>
+  </form>
+</div>

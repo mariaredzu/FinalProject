@@ -1,0 +1,49 @@
+table>:not(tbody)>*>* {
+    background-color: #890e54ff !important;
+    color: white !important;
+}
+
+.bg-special-white {
+    background-color: #f4fefe;
+}
+
+.bg-special-lightgrey {
+    background-color: #f3f5f5;
+}
+
+.bg-special-darkgrey {
+    background-color: #708090ff;
+}
+
+.bg-special-red {
+    background-color: #890e54ff
+}
+
+.bg-special-blue {
+    background-color: #80a9beff
+}
+
+.arrow {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.border-red {
+    border: 3px solid #890e54ff;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f5f5;
+}
+
+@keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

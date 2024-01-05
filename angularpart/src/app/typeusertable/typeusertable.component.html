@@ -1,0 +1,59 @@
+<div class="text-center">
+  <div class="content bg-special-darkgrey">
+      <h2 class="m-0 p-3 text-white">Type user List</h2>
+  </div>
+  <div class="content bg-special-lightgrey p-2">
+    <a class="text-decoration-none text-light" routerLink="/typeuserform">
+      <button class="btn btn-primary w-25 bg-special-red text-white text-center border-0 form-control m-5">
+          <strong>Add a type user</strong>
+      </button>
+    </a>
+    <table class="table table-bordered w-50 mx-auto m-5 mt-0">
+        <thead>
+          <tr>
+            <th (click)="sortColumn('id')">
+              Id
+              <span *ngIf="sortColumnName === 'id'" class="arrow">
+                {{ sortDirection === 'asc' ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th (click)="sortColumn('type_name')">
+              Type
+              <span *ngIf="sortColumnName === 'type_name'" class="arrow">
+                {{ sortDirection === 'asc' ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let usertype of usersty">
+            <tr>
+                <th>{{usertype.id}}</th>
+                <th>{{usertype.type_name}}</th>
+                <th>
+                    <div class="d-flex justify-content-center">
+                      <button [disabled]="usertype.id === 0" class="button me-1 bg-special-blue border-0 form-control" (click)="editUserType(usertype)">
+                        <strong>Edit</strong>
+                    </button>
+                    <button [disabled]="usertype.id === 0" class="button ms-2 bg-special-red text-white border-0 form-control" (click)="removeUserType(usertype)">
+                        <strong>Remove</strong>
+                    </button>
+                    </div>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #myModal>
+  <div class="modal-header">
+    <h4 class="modal-title">CAN'T DELETE</h4>
+    <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This type is being used.
+  </div>
+</ng-template>

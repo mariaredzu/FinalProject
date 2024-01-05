@@ -1,0 +1,31 @@
+<div class="text-center bg-special-lightgrey">
+  <div class="content bg-special-darkgrey">
+    <h2 class="m-0 p-3 text-white">Add / Edit a user</h2>
+  </div>
+  <form [formGroup]="typeuserForm" (ngSubmit)="submitForm()" class="text-center">
+    <input type="hidden" id="id" formControlName="id">
+    <div class="mb-3">
+      <div class="m-3 mt-5">
+        <strong>Type Name</strong>
+      </div>
+      <input type="text" id="type_name" formControlName="type_name" class="border-red mx-auto text-center w-25 p-1 m-3 mt-0">
+    </div>  
+    <div class="mb-3">
+      <div *ngIf="typeuserForm.get('type_name')?.hasError('required') && typeuserForm.get('type_name')?.touched" class="text-danger">
+        Type Name is required.
+      </div>
+      <div *ngIf="typeuserForm.get('type_name')?.hasError('minlength') && typeuserForm.get('type_name')?.touched" class="text-danger">
+        Type Name must be at least 2 characters long.
+      </div>
+      <div *ngIf="typeuserForm.get('type_name')?.hasError('maxlength') && typeuserForm.get('type_name')?.touched" class="text-danger">
+        Type Name cannot exceed 25 characters.
+      </div>
+      <div *ngIf="typeuserForm.get('type_name')?.hasError('pattern') && typeuserForm.get('type_name')?.touched" class="text-danger">
+        Type Name must contain only letters.
+      </div>
+    </div>
+    <button type="submit" class="button form-control mx-auto bg-special-red text-white border-0 w-25 m-3 mt-5">
+      <strong>Create</strong>
+    </button>
+  </form>
+</div>

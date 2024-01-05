@@ -1,0 +1,17 @@
+CREATE DATABASE fullstackproject;
+
+USE fullstackproject;
+
+CREATE TABLE usertype (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE user_ (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(25) NOT NULL,
+    first_name VARCHAR(25) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    user_type_id INT,
+    FOREIGN KEY (user_type_id) REFERENCES UserType(id)
+);
